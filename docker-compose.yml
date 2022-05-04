@@ -1,0 +1,18 @@
+version: "3.3"
+services:
+  #web:
+  #build: .
+  #ports:
+  #- "8000:8000"
+  jsteg:
+    build: "./jsteg"
+    tty: true
+
+  steghide:
+    build: "./steghide"
+    tty: true
+
+  stegseek:
+    build: "./stegseek"
+    tty: true
+
