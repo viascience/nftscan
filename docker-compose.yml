@@ -1,18 +1,28 @@
 version: "3.3"
 services:
-  #web:
-  #build: .
-  #ports:
-  #- "8000:8000"
   jsteg:
     build: "./jsteg"
+    volumes: 
+      - ./data:/dataImages
+    ports:
+      - 5000:5000
     tty: true
 
   steghide:
     build: "./steghide"
+    volumes: 
+      - ./data:/dataImages
+    ports:
+      - 5001:5000
     tty: true
 
   stegseek:
     build: "./stegseek"
+    volumes: 
+      - ./data:/dataImages
+    ports:
+      - 5002:5000
     tty: true
 
+volumes:
+  data:

@@ -11,6 +11,8 @@ List of algorithms supported for JPG scanning:
 + jsteg reveal <image> <output_file>:
     0 found secret - malware
     1 not found secret
+       a. could not decode jpeg:invalid JPEG format: missing 0xff00 sequence -> mapped to 0
+       b. jpeg does not contain hidden data
 
 + yes | steghide info <image>:
     0 extracted file - malware
