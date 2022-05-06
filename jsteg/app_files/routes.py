@@ -30,7 +30,7 @@ def index():
         output_file = f"{image_name}_{random_string}"
 
         # Specific logic for Jsteg
-        response = subprocess.run([ "jsteg", "reveal", image_path, output_file], capture_output=True)
+        response = subprocess.run([ "jsteg", "reveal", image_path, f"/dataImages/{output_file}"], capture_output=True)
         
         # False means foud malware, True means malware not found
         status = response.returncode
