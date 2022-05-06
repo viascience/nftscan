@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   jsteg:
-    build: "./jsteg"
+    build: "../jsteg"
     volumes: 
       - ./data:/dataImages
     ports:
@@ -9,7 +9,7 @@ services:
     tty: true
 
   steghide:
-    build: "./steghide"
+    build: "../steghide"
     volumes: 
       - ./data:/dataImages
     ports:
@@ -17,7 +17,7 @@ services:
     tty: true
 
   stegseek:
-    build: "./stegseek"
+    build: "../stegseek"
     volumes: 
       - ./data:/dataImages
     ports:
