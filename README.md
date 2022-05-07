@@ -29,3 +29,7 @@ Currently not supported methods:
 - stegoveritas -exif -meta -xmp -carve -imageTransform  -extractLSB -trailing <image>
 
 - jhead -ce
+
+# There is a CLI for quick use 
+# There is an API calling the services 
+# API allows for image in volume or dynamic download

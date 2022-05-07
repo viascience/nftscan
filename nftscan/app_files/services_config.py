@@ -18,7 +18,4 @@ def parser_services():
     return services
         
 
-# There is no library to avoid caring the ports
-# There is a cli for quick use and doing the download
-# There is an API calling the services 
-# Next iteration dynamic download
+

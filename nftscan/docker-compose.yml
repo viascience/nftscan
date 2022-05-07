@@ -12,11 +12,11 @@ services:
       - ./data:/dataImages
     tty: true
 
-  #steghide:
-  #  build: "../steghide"
-  #  volumes: 
-  #    - ./data:/dataImages
-  #  tty: true
+  steghide:
+    build: "../steghide"
+    volumes: 
+      - ./data:/dataImages
+    tty: true
 
   #stegseek:
   #  build: "../stegseek"
