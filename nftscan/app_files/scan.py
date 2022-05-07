@@ -1,21 +1,24 @@
 import binascii
+import requests
 
 
 # Main logic to call the multiple algorithms
-def _scan(algorithm, image_name, services):
+def malware_review(algorithm, image_name, services):
     info = []
     malware = 0
     port = 5000
-    
+    services.remove("scanner")
     if algorithm == 'all':
 
-        for service in services:        
-            response = request.get('http://service:{port}', params={image:"image_name"})
-            malware = malware + response.malware
+        for service in services:   
+            response = requests.get(f'http://{service}:{port}', params={"image":image_name})
+            if "malware" not in response.json():
+                raise Exception(response.json()["info"])
+            malware = malware + response.json()["malware"]
             
             info.append({
-                "service": services, 
-                "info": response.info
+                "service": service, 
+                "stdout": response.json()["info"]
                 })
          
         malware = True if malware > 0 else False    
@@ -23,15 +26,15 @@ def _scan(algorithm, image_name, services):
     else:
         
         if algorithm in services:
-            response = request.get('https://algorithm:{port}', params={image:"image_name"})
-            malware = response.malware
+            response = requests.get(f'http://{algorithm}:{port}', params={"image":image_name})
+            malware = response.json()["malware"]
             
             info.append({
                 "service": algorithm, 
-                "info": response.info
+                "info": response.json()["info"]
                 })
         else:
-            raise Except("Service not available")
+            raise Exception("Service not available")
                 
     return {
         "malware": malware, 

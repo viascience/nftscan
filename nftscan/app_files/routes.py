@@ -9,6 +9,7 @@ from flask import request
 from app_files import scan
 from app_files import services_config
 
+
 @app.route('/')
 def index():
 
@@ -18,17 +19,18 @@ def index():
         }
         return response_dict, 400
 
-    elif 'algorithm' not in request.args:
+    if 'algorithm' not in request.args:
         algorithm = "all"
+    else: 
+        algorithm = request.args.get("algorithm")
 
     image_name = request.args.get("image")
-    algorithm = request.args.get("algorithm")
 
     try:
         services = services_config.parser_services()
-        scan_results = scan(algorithm, image_name, services)
+        scan_results = scan.malware_review(algorithm, image_name, services)
     except Exception as exp:
-        return exp, 400
+        return {"info":str(exp)}, 400
         
     return scan_results, 200
 
