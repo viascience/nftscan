@@ -1,4 +1,0 @@
-# List of supported tools
-
-[tools]
-path = '/app_files/docker-compose.yml'
