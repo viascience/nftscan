@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+  scanner:
+    build: "."
+    ports:
+      - 5000:5000
+    tty: true
+
+  jsteg:
+    build: "../jsteg"
+    volumes: 
+      - ./data:/dataImages
+    tty: true
+
+  steghide:
+    build: "../steghide"
+    volumes: 
+      - ./data:/dataImages
+    tty: true
+
+  #stegseek:
+  #  build: "../stegseek"
+  #  volumes: 
+  #    - ./data:/dataImages
+  #  tty: true
+
+volumes:
+  data:
