@@ -33,3 +33,15 @@ Currently not supported methods:
 # There is a CLI for quick use 
 # There is an API calling the services 
 # API allows for image in volume or dynamic download
+
+
+# Steps to use NFTscan CLI
+
+Build API and services 
+`cd ./nftscan && docker-compose build .`
+
+Install typer
+`pip install typer`
+
+Go to the root directory and execute the CLI
+`python main.py <image_name> <algorithm: opt> <address: opt> <port: opt>` 
