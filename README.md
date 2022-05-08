@@ -30,12 +30,12 @@ Currently not supported methods:
 
 - jhead -ce
 
-# There is a CLI for quick use 
-# There is an API calling the services 
-# API allows for image in volume or dynamic download
+There is a CLI for quick use 
+There is an API calling the services 
+API allows for image in volume or dynamic download
 
 
-# Steps to use NFTscan CLI
+### Steps to use NFTscan CLI
 
 Build API and services 
 `cd ./nftscan && docker-compose build .`
