@@ -17,17 +17,18 @@ def main(image: str, algorithm: str = None,
         params = { "image": image, "algorithm": algorithm }
 
     response = requests.get(f"http://{address}:{port}", params = params)
-
-    malware = response.json()["malware"]
-
-
-    typer.echo(f"NFT {image}, malware detected: {malware}.")
-    typer.echo("\n")
-    typer.echo(f"Results from individual algorithms:")
-    for algorithm in response.json()["info"]:
-        typer.echo(f"Service: {algorithm['service']}")
-        typer.echo(f"Result: {algorithm['stdout']} ")
-        typer.echo("***********")
+    
+    if "malware" in response.json():
+        malware = response.json()["malware"]
+        
+        typer.echo(f"NFT {image}, malware detected: {malware}.")
+        typer.echo("\n")
+        typer.echo(f"Results from individual algorithms:")
+        for algorithm in response.json()["info"]:
+            typer.echo(f"Service: {algorithm['service']}")
+            typer.echo(f"Result: {algorithm['stdout']}")
+    else:
+        typer.echo(f"Info after error: {response.json()['info']}")
     
 
 if __name__ == "__main__":

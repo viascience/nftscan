@@ -31,7 +31,7 @@ def malware_review(algorithm, image_name, services):
             
             info.append({
                 "service": algorithm, 
-                "info": response.json()["info"]
+                "stdout": response.json()["info"]
                 })
         else:
             raise Exception("Service not available")
