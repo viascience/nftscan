@@ -1,4 +1,4 @@
-The following repository contains a NFT malware scanner API and CLI. Thanks to this scanner you can test if your favorite NFTs contain any malware or secret hidden within the image.
+The following repository contains a NFT malware scanner as an API and CLI. Thanks to this scanner, you can test if your favorite NFTs contain any malware or secret hidden within the image.
 
 The current version of the scanner supports the following algorithms for JPG malware detection:
 
@@ -52,7 +52,7 @@ nftscan
 
 ### Run tests
 
-To make sure that the software is running correctly before testing your NFTs. Test the library running the following commands:
+To make sure that the software is running correctly before testing your NFTs, follow these steps to test the API:
 
 
 
@@ -64,12 +64,15 @@ To make sure that the software is running correctly before testing your NFTs. Te
 
 
 
+Flask has been chosen as API because it is lightweight. Other APIs could be used, but are not recommended.
+
+
 1. Please create a new directory in the root directory with the name of the service.
 2. The directory will need:
-    1. app_files directory with a flask API.
-    2. Dockerfile running flask as the last step: `CMD ["flask", "run", "-h", "0.0.0.0", "--port=5001"]`
-    3. Note: It can be used any of the other services as a template, but don't forget to add your specific business logic to call your algorithm.
-3. Add the service to the docker-compose.yml under nftscan:
+    1. app_files directory with a Flask API.
+    2. Dockerfile running Flask as the last step: `CMD ["flask", "run", "-h", "0.0.0.0", "--port=5001"]`
+    3. *Note: Any of the services can be used as a template, but don't forget to add your specific  logic to call your algorithm!*
+3. Add the service to the docker-compose.yml in the nftscan directory:
 
 ```
 
