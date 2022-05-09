@@ -33,20 +33,38 @@ nftscan
 **Note**: The current version is only available for JPGs.
 
 
+2. Download the rockyou.txt dictionary and copy it to the stegseek directory under:
 
-2. Build API and services
+```
+
+nftscan
+
+│   README.md
+
+│
+
+└───stegseek
+
+│   │ rockyou.txt
+
+```
+
+**Note**: The dataset can be downloaded from: https://ieee-dataport.org/documents/rockyou
+
+
+3. Build API and services
 
 `cd ./nftscan && docker-compose up --build -d`
 
 
 
-3. Install `typer` into your environment
+4. Install `typer` into your environment
 
 `pip install typer`
 
 
 
-4. Go to the root directory and execute the CLI
+5. Go to the root directory and execute the CLI
 
 `python main.py <image_name> <algorithm: opt> <address: opt> <port: opt>`
 
