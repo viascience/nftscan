@@ -93,7 +93,7 @@ def test_earth_no_malware(docker_compose):
     # jsteg assert
     assert "jpeg does not contain hidden data" in output
     # stegseek assert
-    assert "Progress: 99.42% (132.7 MB) " in output
+    assert "error: Could not find a valid passphrase." in output
 
     for file in DATA_DIR.glob("earthnomalware_*"):
         file.unlink()
