@@ -15,7 +15,7 @@ def main(image: str, algorithm: str = None,
         params = { "image": image }
     else:
         params = { "image": image, "algorithm": algorithm }
-
+    
     response = requests.get(f"http://{address}:{port}", params = params)
     
     if "malware" in response.json():
@@ -26,7 +26,11 @@ def main(image: str, algorithm: str = None,
         typer.echo(f"Results from individual algorithms:")
         for algorithm in response.json()["info"]:
             typer.echo(f"Service: {algorithm['service']}")
-            typer.echo(f"Result: {algorithm['stdout']}")
+            if "stderr" in algorithm["stdout"]:
+                typer.echo(f"Result:\nStdout: {algorithm['stdout']['stdout']}")
+                typer.echo(f"Stderr: {algorithm['stdout']['stderr']}")
+            else:
+                typer.echo(f"Result: {algorithm['stdout']}")
     else:
         typer.echo(f"Info after error: {response.json()['info']}")
     

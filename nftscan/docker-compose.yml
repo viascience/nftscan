@@ -12,17 +12,17 @@ services:
       - ./data:/dataImages
     tty: true
 
-  steghide:
-    build: "../steghide"
+  stegseek:
+    build: "../stegseek"
     volumes: 
       - ./data:/dataImages
     tty: true
 
-  #stegseek:
-  #  build: "../stegseek"
-  #  volumes: 
-  #    - ./data:/dataImages
-  #  tty: true
+  quickscan:
+    build: "../quickscan"
+    volumes: 
+      - ./data:/dataImages
+    tty: true
 
 volumes:
   data:

@@ -1,10 +1,7 @@
 FROM ubuntu
 
-# Install stegseek
+# Install quickscan
 RUN apt update
-RUN apt install wget -y
-RUN wget https://github.com/RickdeJager/stegseek/releases/download/v0.6/stegseek_0.6-1.deb
-RUN apt install ./stegseek_0.6-1.deb -y
 
 RUN apt install python3 python3-pip -y
 
@@ -12,7 +9,6 @@ RUN apt install python3 python3-pip -y
 RUN pip install flask
 
 COPY ./app_files /app_files
-COPY ./rockyou.txt /app_files
 WORKDIR /app_files
 
 ENV FLASK_APP=/app_files/routes.py
