@@ -64,7 +64,7 @@ To make sure that the software is running correctly before testing your NFTs, fo
 
 
 
-Flask has been chosen as API because it is lightweight. Other APIs could be used, but are not recommended.
+Flask has been chosen as the API because it is lightweight. Other APIs could be used, but are not recommended.
 
 
 1. Please create a new directory in the root directory with the name of the service.
