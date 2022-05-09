@@ -71,7 +71,7 @@ Flask has been chosen as the API because it is lightweight. Other APIs could be 
 2. The directory will need:
     1. app_files directory with a Flask API.
     2. Dockerfile running Flask as the last step: `CMD ["flask", "run", "-h", "0.0.0.0", "--port=5001"]`
-    3. *Note: Any of the services can be used as a template, but don't forget to add your specific  logic to call your algorithm!*
+    3. *Note: Any of the services can be used as a template, but don't forget to add your specific logic to call your algorithm!*
 3. Add the service to the docker-compose.yml in the nftscan directory:
 
 ```
