@@ -29,13 +29,13 @@ def main(
         typer.echo(f"NFT {image}, malware detected: {malware}.")
         typer.echo("\n")
         typer.echo(f"Results from individual algorithms:")
-        for algorithm in response.json()["info"]:
-            typer.echo(f"Service: {algorithm['service']}")
-            if "stderr" in algorithm["stdout"]:
-                typer.echo(f"Result:\nStdout: {algorithm['stdout']['stdout']}")
-                typer.echo(f"Stderr: {algorithm['stdout']['stderr']}")
+        for algorithm_response in response.json()["info"]:
+            typer.echo(f"Service: {algorithm_response['service']}")
+            if "stderr" in algorithm_response["stdout"]:
+                typer.echo(f"Result:\nStdout: {algorithm_response['stdout']['stdout']}")
+                typer.echo(f"Stderr: {algorithm_response['stdout']['stderr']}")
             else:
-                typer.echo(f"Result: {algorithm['stdout']}")
+                typer.echo(f"Result: {algorithm_response['stdout']}")
     else:
         typer.echo(f"Info after error: {response.json()['info']}")
 
