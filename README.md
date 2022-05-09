@@ -1,56 +1,106 @@
-The following repository is aiming to create an easy to use python library and cli to download and scan malware NFTs.
+The following repository contains a NFT malware scanner API and CLI. Thanks to this scanner you can test if your favorite NFTs contain any malware or secret hidden within the image.
 
-List of algorithms supported for NFTs with JPG scanning:
-+ Script to catch php and JS in image
-
-+ jsteg reveal <image> <output_file>:
-    0 found secret - malware
-    1 not found secret
-       a. could not decode jpeg:invalid JPEG format: missing 0xff00 sequence -> mapped to 0
-       b. jpeg does not contain hidden data
-
-+ steghide info <image>:
-    0 extracted file - malware
-    1 could not extract files 
-
-+ Stegseek
-docker run --rm -it -v "$(pwd):/steg" rickdejager/stegseek <image> rockyou.txt
-    0  Extracting to <image>.out
-    1 [!] error: Could not find a valid passphrase.
+The current version of the canner support the following algorithms for JPG malware detection:
 
 
-Currently not supported methods:
-- verbose (only info - no error)
- 
-- stegdetect 
 
-- stegbreak 
-
-- stegoveritas -exif -meta -xmp -carve -imageTransform  -extractLSB -trailing <image>
-
-- jhead -ce
-
-There is a CLI for quick use 
-There is an API calling the services 
-API allows for image in volume or dynamic download
-
+* **quickscan**: Php scanner
+* **jsteg**: Reveals data hiding inside the image and indicates JPGs formatting that could contain malware. Reference repository: https://github.com/lukechampine/jsteg
+* **stegseek**: Fast steghide cracker that can extract hidden data from files. Considered to be thousands of times faster than other crackers Reference repository: https://github.com/RickdeJager/stegseek
 
 ### Steps to use NFTscan CLI
 
-Build API and services 
+
+
+1. Download the NFT that you would like to scan and copy it under:
+
+```
+
+nftscan
+
+│   README.md
+
+│
+
+└───nftscan
+
+│   └───data
+
+│       │  image.jpg
+
+```
+
+**Note**: The current version is only available for JPGs.
+
+
+
+2. Build API and services
+
 `cd ./nftscan && docker-compose build .`
 
-Install typer
+
+
+3. Install typer
+
 `pip install typer`
 
-Go to the root directory and execute the CLI
-`python main.py <image_name> <algorithm: opt> <address: opt> <port: opt>` 
+
+
+4. Go to the root directory and execute the CLI
+
+`python main.py &lt;image_name> &lt;algorithm: opt> &lt;address: opt> &lt;port: opt>`
 
 ### Run tests
 
-`poetry install`
+To make sure that the software is running correctly before testing your NFTs. Test the library running the following commands:
 
-`poetry shell`
 
-From root directory 
-`pytest`
+
+1. `poetry install`
+2. `poetry shell`
+3. From root directory: `pytest`
+
+### How to add new services
+
+
+
+1. Please create a new directory on the root directory with the name of the service.
+2. The directory will need:
+    1. app_files directory with a flask API.
+    2. Dockerfile running flask as the last step: `CMD ["flask", "run", "-h", "0.0.0.0", "--port=5001"]`
+    3. Note: It can be used any of the other services as a template, but don't forget to add your specific business logic to call your algorithm.
+3. Add the service to the docker-compose.yml under nftscan:
+
+```
+
+nftscan
+
+│   README.md
+
+│
+
+└───nftscan
+
+│   │   docker-compose.yml
+
+│   
+
+└───New Service
+
+│   │   Dockerfile
+
+│   │
+
+│   └───app_files
+
+│       │   __init__.py
+
+│       │   routes.py
+
+│       │   ...
+
+```
+
+
+
+4. Add your test to `test_scan.py`
