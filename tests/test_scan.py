@@ -16,11 +16,14 @@ DATA_DIR = NFTSCAN_DIR.joinpath("data")
 
 runner = CliRunner()
 
+
 @pytest.fixture(scope="session")
 def docker_compose():
     docker_compose_path = NFTSCAN_DIR.joinpath("docker-compose.yml")
     assert docker_compose_path.is_file()
-    project = project_from_options(project_dir=NFTSCAN_DIR, options={"--file": [docker_compose_path]})
+    project = project_from_options(
+        project_dir=NFTSCAN_DIR, options={"--file": [docker_compose_path]}
+    )
     project.build()
     project.up()
     # sleep so that the containers are ready.
@@ -44,11 +47,12 @@ def test_php(docker_compose):
     # jsteg assert
     assert "jpeg does not contain hidden data" in output
     # stegseek assert
-    assert "Found passphrase: \"123\"" in output
-    assert "Original filename: \"testtext2.txt\"" in output
+    assert 'Found passphrase: "123"' in output
+    assert 'Original filename: "testtext2.txt"' in output
 
     for file in DATA_DIR.glob("test.php_*"):
         file.unlink()
+
 
 def test_jacksparrowpuppylaser(docker_compose):
     """Test that jsteg detects invalid JPEG format."""
@@ -59,12 +63,15 @@ def test_jacksparrowpuppylaser(docker_compose):
     # malware assert
     assert "malware detected: True" in output
     # jsteg assert
-    assert "could not decode jpeg:invalid JPEG format: missing 0xff00 sequence" in output
+    assert (
+        "could not decode jpeg:invalid JPEG format: missing 0xff00 sequence" in output
+    )
     # stegseek assert
     assert "Corrupt JPEG data: premature end of data segment" in output
 
     for file in DATA_DIR.glob("JackSparrowPuppyLaser_*"):
         file.unlink()
+
 
 def test_shell(docker_compose):
     """Test that jsteg detects unexpected EOF."""
@@ -81,6 +88,7 @@ def test_shell(docker_compose):
 
     for file in DATA_DIR.glob("shell_*"):
         file.unlink()
+
 
 def test_earth_no_malware(docker_compose):
     """Check that a clean file passes."""
