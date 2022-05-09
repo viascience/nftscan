@@ -1,6 +1,9 @@
 import typer 
 import requests
 
+app = typer.Typer()
+
+@app.command()
 def main(image: str, algorithm: str = None, 
         address:str = "127.0.0.1", port: int = 5000):
     """
@@ -36,4 +39,4 @@ def main(image: str, algorithm: str = None,
     
 
 if __name__ == "__main__":
-    typer.run(main)
+    app()
