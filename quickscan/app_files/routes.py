@@ -40,7 +40,7 @@ def index():
                 malware = True
                 outcome = 'PHP found' 
             
-            #if binascii.hexlify(b'/*') in binascii.hexlify(content) and binascii.hexlify(b'*/') in binascii.hexlify(content): 
+            #if binascii.hexlify(b'/*') in binascii.hexlify(content) and binascii.hexlify(b'*/=') in binascii.hexlify(content): 
             #    malware = True
             #    outcome = 'Javascript found'
     
