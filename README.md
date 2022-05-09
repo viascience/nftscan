@@ -49,7 +49,7 @@ nftscan
 
 ```
 
-**Note**: The dataset can be downloaded from: https://ieee-dataport.org/documents/rockyou
+**Note**: The dataset can be downloaded from: https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
 
 
 3. Build API and services
