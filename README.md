@@ -48,7 +48,7 @@ nftscan
 
 4. Go to the root directory and execute the CLI
 
-`python main.py &lt;image_name> &lt;algorithm: opt> &lt;address: opt> &lt;port: opt>`
+`python main.py <image_name> <algorithm: opt> <address: opt> <port: opt>`
 
 ### Run tests
 
@@ -103,4 +103,3 @@ nftscan
 
 
 
-4. Add your test to `test_scan.py`
