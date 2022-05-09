@@ -1,13 +1,11 @@
+import os.path as path
 import random
 import string
 import subprocess
-import os.path as path
 from pathlib import Path
 
-from app_files import app
+from app_files import app, scan, services_config
 from flask import request
-from app_files import scan
-from app_files import services_config
 
 
 @app.route("/")

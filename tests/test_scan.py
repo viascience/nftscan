@@ -1,12 +1,12 @@
-from compose.cli.command import project_from_options
 import pathlib
-import pytest
-from compose.service import ImageType
-from typer.testing import CliRunner
 import time
 
-from main import app
+import pytest
+from compose.cli.command import project_from_options
+from compose.service import ImageType
+from typer.testing import CliRunner
 
+from main import app
 
 FILE_PATH = pathlib.Path(__file__)
 TEST_DIR = FILE_PATH.parent

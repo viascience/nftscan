@@ -1,9 +1,10 @@
+import binascii
+import os.path as path
 import random
 import string
 import subprocess
-import binascii
-import os.path as path
 from pathlib import Path
+
 from app_files import app
 from flask import request
 

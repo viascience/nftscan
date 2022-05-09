@@ -1,7 +1,8 @@
-import yaml
 import os.path as path
 from configparser import ConfigParser
 from importlib import resources
+
+import yaml
 
 
 def parser_services():

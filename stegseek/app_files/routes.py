@@ -1,8 +1,9 @@
+import os.path as path
 import random
 import string
 import subprocess
-import os.path as path
 from pathlib import Path
+
 from app_files import app
 from flask import request
 
