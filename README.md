@@ -1,12 +1,12 @@
 The following repository contains a NFT malware scanner API and CLI. Thanks to this scanner you can test if your favorite NFTs contain any malware or secret hidden within the image.
 
-The current version of the canner support the following algorithms for JPG malware detection:
+The current version of the scanner supports the following algorithms for JPG malware detection:
 
 
 
-* **quickscan**: Php scanner
+* **quickscan**: PHP scanner
 * **jsteg**: Reveals data hiding inside the image and indicates JPGs formatting that could contain malware. Reference repository: https://github.com/lukechampine/jsteg
-* **stegseek**: Fast steghide cracker that can extract hidden data from files. Considered to be thousands of times faster than other crackers Reference repository: https://github.com/RickdeJager/stegseek
+* **stegseek**: Fast steghide cracker that can extract hidden data from files. Considered to be thousands of times faster than other crackers. Reference repository: https://github.com/RickdeJager/stegseek
 
 ### Steps to use NFTscan CLI
 
@@ -36,11 +36,11 @@ nftscan
 
 2. Build API and services
 
-`cd ./nftscan && docker-compose build .`
+`cd ./nftscan && docker-compose up --build -d`
 
 
 
-3. Install typer
+3. Install `typer` into your environment
 
 `pip install typer`
 
@@ -64,7 +64,7 @@ To make sure that the software is running correctly before testing your NFTs. Te
 
 
 
-1. Please create a new directory on the root directory with the name of the service.
+1. Please create a new directory in the root directory with the name of the service.
 2. The directory will need:
     1. app_files directory with a flask API.
     2. Dockerfile running flask as the last step: `CMD ["flask", "run", "-h", "0.0.0.0", "--port=5001"]`
