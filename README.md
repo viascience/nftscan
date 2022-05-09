@@ -45,3 +45,12 @@ Install typer
 
 Go to the root directory and execute the CLI
 `python main.py <image_name> <algorithm: opt> <address: opt> <port: opt>` 
+
+### Run tests
+
+`poetry install`
+
+`poetry shell`
+
+From root directory 
+`pytest`

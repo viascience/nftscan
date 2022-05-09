@@ -32,7 +32,7 @@ def index():
         # Specific logic for Stegseek
         response = subprocess.run([ "stegseek", image_path, "rockyou.txt", "-xf", output_file], capture_output=True)
         
-        # False means foud malware, True means malware not found
+        # False means found malware, True means malware not found
         status = response.returncode
         
         # outcome = response.stderr if status == True else response.stdout

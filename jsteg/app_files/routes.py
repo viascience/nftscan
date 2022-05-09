@@ -31,8 +31,7 @@ def index():
 
         # Specific logic for Jsteg
         response = subprocess.run([ "jsteg", "reveal", image_path, f"/dataImages/{output_file}"], capture_output=True)
-        
-        # False means foud malware, True means malware not found
+        # False means found malware, True means malware not found
         status = response.returncode
         
         outcome = response.stderr if status == True else response.stdout
@@ -45,7 +44,7 @@ def index():
             response_dict = {
                 "info": str(outcome)
             }
-            return response_dict, 400            
+            return response_dict, 400
     
     response_dict = {
         "malware": malware,
