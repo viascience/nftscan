@@ -1,3 +1,9 @@
+### GitHub Repository Status
+
+This repository is only available to maintain previous public references to the repository but the support is discontinued and under no active development.
+
+--------------------------------------------------------
+
 The following repository contains a NFT malware scanner as an API and CLI. Thanks to this scanner, you can test if your favorite NFTs contain any malware or secret hidden within the image.
 
 The current version of the scanner supports the following algorithms for JPG malware detection:
